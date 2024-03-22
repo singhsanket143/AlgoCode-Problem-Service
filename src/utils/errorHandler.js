@@ -1,6 +1,8 @@
 const BaseError = require("../errors/base.error");
 const { StatusCodes } = require('http-status-codes');
-function errorHandler(err, req, res) {
+const NotFound = require("../errors/notfound.error");
+
+function errorHandler(err, req, res, next) {
     if(err instanceof BaseError) {
         return res.status(err.statusCode).json({
             success: false,
@@ -18,4 +20,11 @@ function errorHandler(err, req, res) {
     });
 }
 
-module.exports = errorHandler;
+// this will throw an NotFound error if you hit any route which is not defined
+const notFound = (req, res, next) => {
+    const error = new NotFound(`Not Found - ${req.originalUrl}`);
+    res.status(StatusCodes.NOT_FOUND);
+    next(error);
+};
+
+module.exports = {errorHandler, notFound};
