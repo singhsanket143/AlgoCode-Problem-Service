@@ -18,13 +18,15 @@ app.use('/api', apiRouter);
 
 
 app.get('/ping', (req, res) => {
-    return res.json({message: 'Problem Service is alive'});
+    return res.json({ message: 'Problem Service is alive' });
 });
+
+
 
 // last middleware if any error comes
 app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`Server started at PORT: ${PORT}`);
-    
+
 });
