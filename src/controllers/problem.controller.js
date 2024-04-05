@@ -66,10 +66,9 @@ async function deleteProblem(req, res, next) {
     }
 }
 
-function updateProblem(req, res, next) {
+async function updateProblem(req, res, next) {
     try {
-        // nothing implemented
-        throw new NotImplemented('Add Problem');
+        const updatedProblem = await problemService.updateProblem(req.params.id,req.body);
     } catch(error) {
         next(error);
     }
