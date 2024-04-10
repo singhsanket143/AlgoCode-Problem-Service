@@ -42,7 +42,7 @@ class ProblemRepository {
         }
     }
 
-    async updateProblem(id) {
+    async updateProblem(id, updatedData) {
         try {
             const updatedProblem = await Problem.findByIdAndUpdate(id, updatedData, { new: true });
             if (!updatedProblem) {
