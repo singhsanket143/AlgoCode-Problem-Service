@@ -7,6 +7,7 @@ async function connectToDB() {
     try {
         if(NODE_ENV == "development") {
             await mongoose.connect(ATLAS_DB_URL);
+            console.log('successfully connected to database');
         } 
     } catch(error) {
         console.log('Unable to connect to the DB server');
