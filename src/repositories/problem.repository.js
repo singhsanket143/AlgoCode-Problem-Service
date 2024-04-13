@@ -65,7 +65,6 @@ class ProblemRepository {
             }
             return updatedProblem;
         } catch (error) {
-            logger.error(`${error.message}`);
             throw error;
         }
     }
