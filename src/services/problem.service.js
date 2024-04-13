@@ -30,6 +30,10 @@ class ProblemService {
         return problem;
     }
 
+    async updateProblem(id, updatedData) {
+        const updatedProblem = await this.problemRepository.updateProblem(id, updatedData);
+        return updatedProblem;
+    }
 }
 
 module.exports = ProblemService;
