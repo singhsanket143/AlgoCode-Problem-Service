@@ -1,4 +1,3 @@
-const NotImplemented = require('../errors/notImplemented.error');
 const { ProblemService } = require('../services');
 const { ProblemRepository } = require('../repositories');
 const { StatusCodes } = require('http-status-codes');
@@ -66,10 +65,15 @@ async function deleteProblem(req, res, next) {
     }
 }
 
-function updateProblem(req, res, next) {
+async function updateProblem(req, res, next) {
     try {
-        // nothing implemented
-        throw new NotImplemented('Add Problem');
+         const response = await problemService.updateProblem(req.params.id, req.body);
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: 'Successfully updated the problem',
+            error: {},
+            data: response
+        });
     } catch(error) {
         next(error);
     }
