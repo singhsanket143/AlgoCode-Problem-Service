@@ -57,7 +57,7 @@ class ProblemRepository {
     }
   }
 
-  async updatePoblem(problemId, problemData) {
+  async updateProblem(problemId, problemData) {
     try {
       const updatedProblem = await Problem.findByIdAndUpdate(
         problemId,
